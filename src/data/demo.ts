@@ -43,6 +43,7 @@ export const activities: ActivityRecord[] = [
 
 export const contentRows: Record<string, TableRow[]> = {
   blog: [
+    { name: 'Links people cannot tell are links', secondary: 'Accessibility · /link-visibility', status: 'Published', meta: 'Updated today', owner: 'Anika Sharma' },
     { name: 'A practical guide to trekking in Nepal', secondary: 'Travel guide · /trekking-nepal', status: 'Published', meta: '2,480 views', owner: 'Anika Sharma' },
     { name: 'When is the best time for Everest Base Camp?', secondary: 'Planning · /best-time-everest', status: 'In review', meta: 'Draft updated today', owner: 'Maya K.' },
     { name: 'The quiet side of the Annapurna Circuit', secondary: 'Stories · /quiet-annapurna', status: 'Draft', meta: 'Last edited 2 days ago', owner: 'Pema Sherpa' },

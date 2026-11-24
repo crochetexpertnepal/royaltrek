@@ -37,6 +37,7 @@ export const routeLabels: Record<string, { eyebrow: string; title: string; detai
   '/': { eyebrow: 'Workspace', title: 'Good morning, Anika', detail: 'Here’s the shape of the trailhead today.' },
   '/analytics': { eyebrow: 'Workspace / Analytics', title: 'Analytics', detail: 'A clear view of reach, intent, and conversion.' },
   '/content/blog': { eyebrow: 'Content management / Blog', title: 'Blog management', detail: 'Keep your travel stories useful, current, and discoverable.' },
+  '/content/blog/:slug/edit': { eyebrow: 'Content management / Blog / Editor', title: 'Edit blog post', detail: 'Shape the story, search appearance, and publishing details in one place.' },
   '/content/pages': { eyebrow: 'Content management / Website pages', title: 'Website pages', detail: 'Shape the pages that make the agency feel like home.' },
   '/content/media': { eyebrow: 'Content management / Media library', title: 'Media library', detail: 'A tidy source of truth for every image and brand asset.' },
   '/content/faqs': { eyebrow: 'Content management / FAQs & services', title: 'FAQs & services', detail: 'Answer the practical questions before they become friction.' },

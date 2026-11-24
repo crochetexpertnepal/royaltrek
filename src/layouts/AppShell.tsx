@@ -18,7 +18,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [quickOpen, setQuickOpen] = useState(false)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
-  const pageMeta = routeLabels[location.pathname] ?? routeLabels['/']
+  const pageMeta = routeLabels[location.pathname] ?? (location.pathname.startsWith('/content/blog/') ? routeLabels['/content/blog/:slug/edit'] : routeLabels['/'])
   const results = useMemo(() => searchItems.filter((item) => `${item.label} ${item.detail}`.toLowerCase().includes(search.toLowerCase())).slice(0, 5), [search])
 
   const go = (path: string) => { navigate(path); setMobileOpen(false); setSearch('') }
