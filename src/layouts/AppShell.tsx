@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Bell, ChevronDown, HelpCircle, LogOut, Menu, Moon, Plus, Search, Settings, Sun, X } from 'lucide-react'
+import { Bell, ChevronDown, HelpCircle, Menu, Moon, Plus, Search, Settings, Sun, X } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { navSections, routeLabels } from '../routes/navigation'
 import { searchItems } from '../data/demo'
