@@ -83,11 +83,20 @@ export const contentRows: Record<string, TableRow[]> = {
   ],
 }
 
+export const redirects = [
+  { id: 'RED-104', source: '/trekking/everest-base-camp', destination: '/trekking/packages/everest-base-camp', type: '301', status: 'Active', hits: '1,842', updated: 'Today, 09:12' },
+  { id: 'RED-103', source: '/blog/best-season-nepal', destination: '/content/best-time-trek-nepal', type: '301', status: 'Active', hits: '928', updated: 'Yesterday' },
+  { id: 'RED-102', source: '/offers/autumn-2025', destination: '/seasonal/autumn-himalaya', type: '302', status: 'Paused', hits: '416', updated: 'Aug 18' },
+  { id: 'RED-101', source: '/old-contact', destination: '/contact', type: '307', status: 'Active', hits: '204', updated: 'Aug 15' },
+  { id: 'RED-100', source: '/expedition/annapurna-legacy', destination: '', type: '410', status: 'Active', hits: '73', updated: 'Aug 12' },
+]
+
 export const searchItems = [
   ...packages.map((item) => ({ label: item.name, detail: `Package · ${item.region}`, path: '/trekking/packages' })),
   ...contentRows.blog.map((item) => ({ label: item.name, detail: 'Blog article', path: '/content/blog' })),
   ...contentRows.destinations.map((item) => ({ label: item.name, detail: 'Destination', path: '/trekking/destinations' })),
   ...contentRows.bookings.map((item) => ({ label: item.name, detail: 'Booking', path: '/customers/bookings' })),
+  ...redirects.map((item) => ({ label: item.source, detail: `Redirect ${item.type} · ${item.destination || 'Gone'}`, path: '/system/redirects' })),
 ]
 
 export const kpis = [

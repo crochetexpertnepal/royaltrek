@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react'
-import { Activity, ArrowRight, CalendarDays, Check, ChevronDown, CircleHelp, Clock3, Download, ExternalLink, Filter, GripVertical, MoreHorizontal, Plus, RotateCcw, Send, Sparkles, Target, TrendingUp, UsersRound } from 'lucide-react'
+import { useMemo, useRef, useState } from 'react'
+import { Activity, AlertTriangle, ArrowRight, CalendarDays, Check, ChevronDown, CircleHelp, Clock3, Download, ExternalLink, Filter, GripVertical, History, Link2, MoreHorizontal, Plus, RotateCcw, Send, Sparkles, Target, TrendingUp, UploadCloud, UsersRound } from 'lucide-react'
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { activities, contentRows, enquiryData, enquiries, kpis, packages, trafficData, upcomingDepartures } from '../data/demo'
+import { activities, contentRows, enquiryData, enquiries, kpis, packages, redirects, trafficData, upcomingDepartures } from '../data/demo'
 import { DataTable, FilterButton, MetricCard, SectionHeading, StatusBadge, ChartLegend, SearchField } from '../components/ui'
 import type { TableRow } from '../types'
 
@@ -58,4 +58,62 @@ function ToggleRow({ label, detail, active, onToggle }: { label: string; detail:
 
 function SEOPage() {
   return <div className="page-stack"><PageHeader eyebrow="System / SEO" title="SEO overview" detail="Make the right pages easier to find, understand, and trust." action="Run audit" onAction={() => window.alert('Demo audit queued.')} /><div className="seo-health panel"><div className="seo-score"><span>Site health</span><strong>86</strong><small>/ 100</small><div className="score-ring"><div /></div></div><div className="seo-checks"><div><Check size={15} /><span>Metadata coverage</span><strong>94%</strong></div><div><Check size={15} /><span>Indexable pages</span><strong>42 / 48</strong></div><div><CircleHelp size={15} /><span>Needs attention</span><strong>6 URLs</strong></div></div><div className="seo-cta"><div className="eyebrow">Next best action</div><strong>Review missing meta descriptions</strong><p>Six destination pages could be more specific in search results.</p><button className="text-button">Open audit <ArrowRight size={14} /></button></div></div><div className="dashboard-grid two-thirds"><section className="panel"><SectionHeading eyebrow="Index status" title="Search visibility" detail="Demo summary of the current sitemap." action={<FilterButton>All content</FilterButton>} /><div className="index-list">{[['Indexed URLs', '42', '#237C72'], ['Submitted URLs', '48', '#123D32'], ['Excluded URLs', '4', '#F59E45'], ['Crawling errors', '2', '#D76E5F']].map(([label, value, color]) => <div key={label}><span><i style={{ background: color }} />{label}</span><strong>{value}</strong><ArrowRight size={14} /></div>)}</div></section><section className="panel"><SectionHeading eyebrow="Metadata coverage" title="Content health" detail="Where your next SEO hour pays off." /><div className="health-bars">{[['Packages', 92], ['Destinations', 78], ['Blog posts', 88], ['Website pages', 96]].map(([label, value]) => <div key={label}><div><span>{label}</span><strong>{value}%</strong></div><div className="health-track"><i style={{ width: `${value}%` }} /></div></div>)}</div></section></div></div>
+}
+
+
+type RedirectType = '301' | '302' | '307' | '410'
+type RedirectStatus = 'Active' | 'Paused' | 'Broken'
+type RedirectRecord = { id: string; source: string; destination: string; type: RedirectType; status: RedirectStatus; hits: string; updated: string }
+
+const redirectTypeCopy: Record<RedirectType, { title: string; detail: string; className: string }> = {
+  '301': { title: 'Permanent', detail: 'Old URL has moved for good.', className: '' },
+  '302': { title: 'Temporary', detail: 'Use while a campaign or page is live.', className: 'temp' },
+  '307': { title: 'Method preserving', detail: 'Temporary move that keeps the request method.', className: 'method' },
+  '410': { title: 'Gone', detail: 'Tell search engines the old URL is intentionally removed.', className: 'gone' },
+}
+
+export function RedirectPage() {
+  const [rows, setRows] = useState<RedirectRecord[]>(redirects as RedirectRecord[])
+  const [source, setSource] = useState('')
+  const [destination, setDestination] = useState('')
+  const [type, setType] = useState<RedirectType>('301')
+  const [active, setActive] = useState(true)
+  const [search, setSearch] = useState('')
+  const [typeFilter, setTypeFilter] = useState<'All' | RedirectType>('All')
+  const [formError, setFormError] = useState('')
+  const [toast, setToast] = useState('')
+  const uploadRef = useRef<HTMLInputElement>(null)
+
+  const showToast = (message: string) => { setToast(message); window.setTimeout(() => setToast(''), 2600) }
+  const filteredRows = useMemo(() => rows.filter((row) => (typeFilter === 'All' || row.type === typeFilter) && `${row.source} ${row.destination} ${row.id} ${row.status}`.toLowerCase().includes(search.toLowerCase())), [rows, search, typeFilter])
+  const counts = useMemo(() => ({ active: rows.filter((row) => row.status === 'Active').length, paused: rows.filter((row) => row.status === 'Paused').length, broken: rows.filter((row) => row.status === 'Broken').length }), [rows])
+
+  const addRedirect = () => {
+    const nextSource = source.trim()
+    const nextDestination = destination.trim()
+    if (!nextSource.startsWith('/')) return setFormError('Source URL must start with /, for example /old-trek-page.')
+    if (type !== '410' && !nextDestination.startsWith('/')) return setFormError('Destination URL must start with /, for example /trekking/new-page.')
+    if (rows.some((row) => row.source === nextSource)) return setFormError('That source URL already has a redirect. Edit the existing rule instead.')
+    setRows((current) => [{ id: `RED-${105 + current.length}`, source: nextSource, destination: type === '410' ? '' : nextDestination, type, status: active ? 'Active' : 'Paused', hits: '0', updated: 'Just now' }, ...current])
+    setSource(''); setDestination(''); setFormError(''); showToast(`${type} redirect added to the demo queue`)
+  }
+
+  const importCsv = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) showToast(`${file.name} queued for CSV validation`)
+    event.target.value = ''
+  }
+
+  return <div className="page-stack">
+    <PageHeader eyebrow="System / SEO / Redirects" title="Redirect management" detail="Keep old paths useful while your content evolves." action="Add redirect" onAction={() => document.getElementById('redirect-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
+    <div className="redirect-stats"><div className="redirect-stat"><Link2 size={17} /><div><strong>{counts.active}</strong><span>active rules</span></div></div><div className="redirect-stat"><History size={17} /><div><strong>{rows.reduce((sum, row) => sum + Number(row.hits.replace(',', '')), 0).toLocaleString()}</strong><span>redirected visits</span></div></div><div className="redirect-stat"><AlertTriangle size={17} /><div><strong>{counts.broken}</strong><span>rules need attention</span></div></div></div>
+    <div className="redirect-layout">
+      <section className="panel redirect-form-panel" id="redirect-form"><div className="panel-heading"><div><div className="eyebrow">New rule</div><h2>Send an old URL somewhere useful</h2></div><button className="ghost-button" onClick={() => { setSource(''); setDestination(''); setFormError('') }}><RotateCcw size={14} />Clear</button></div><div className="form-grid"><label><span>Old / source URL</span><input value={source} onChange={(event) => setSource(event.target.value)} placeholder="/old-trek-page" /></label><label><span>Redirect type</span><div className="input-with-icon"><select value={type} onChange={(event) => setType(event.target.value as RedirectType)}><option value="301">301 · Permanent</option><option value="302">302 · Temporary</option><option value="307">307 · Method preserving</option><option value="410">410 · Gone</option></select><ChevronDown size={15} /></div></label><label className="full"><span>New / destination URL {type === '410' && <em>optional for Gone</em>}</span><input value={destination} onChange={(event) => setDestination(event.target.value)} disabled={type === '410'} placeholder={type === '410' ? 'No destination — this page is gone' : '/trekking/new-page'} /></label></div><div className="redirect-note"><CircleHelp size={15} /><span>Use <strong>301</strong> when the old page has permanently moved. Use <strong>302</strong> or <strong>307</strong> for temporary campaigns. Use <strong>410</strong> when there should be no replacement page.</span></div>{formError && <div className="form-error"><AlertTriangle size={14} />{formError}</div>}<div className="redirect-form-actions"><label className="inline-toggle"><input type="checkbox" checked={active} onChange={(event) => setActive(event.target.checked)} /><span>Active immediately</span></label><button className="primary-button" onClick={addRedirect}><Plus size={15} />Add redirect</button></div></section>
+      <aside className="panel redirect-help-card"><div className="eyebrow">Redirect playbook</div><h2>Protect the trail behind you.</h2><p>Keep the old links from campaigns, search results, and partner sites useful as the site grows.</p><div className="redirect-type-list">{(Object.keys(redirectTypeCopy) as RedirectType[]).map((item) => <div key={item}><b className={redirectTypeCopy[item].className}>{item}</b><span><strong>{redirectTypeCopy[item].title}</strong>{redirectTypeCopy[item].detail}</span></div>)}</div></aside>
+    </div>
+    <div className="redirect-toolbar"><SearchField value={search} onChange={setSearch} placeholder="Search source or destination..." /><div className="filter-group">{(['All', '301', '302', '307', '410'] as const).map((item) => <button key={item} className={typeFilter === item ? 'filter-active' : ''} onClick={() => setTypeFilter(item)}>{item === 'All' ? 'All rules' : item}</button>)}<button onClick={() => uploadRef.current?.click()}><UploadCloud size={14} /> Import CSV</button><input ref={uploadRef} type="file" accept=".csv,text/csv" hidden onChange={importCsv} /></div></div>
+    <section className="panel redirect-table-panel"><div className="table-panel-heading"><div><div className="eyebrow">{filteredRows.length} rules · {counts.paused} paused</div><h2>Redirect registry</h2></div><button className="ghost-button" onClick={() => showToast('Redirect history opened')}><History size={14} />History</button></div><div className="table-shell"><table><thead><tr><th>Old URL</th><th>New URL</th><th>Type</th><th>Status</th><th>Hits</th><th>Updated</th><th /></tr></thead><tbody>{filteredRows.map((row) => <tr key={row.id}><td><div className="table-name">{row.source}</div><div className="table-secondary">{row.id}</div></td><td><div className="table-name">{row.destination || 'No destination'}</div><div className="table-secondary">{row.type === '410' ? 'Intentionally removed' : 'Internal route'}</div></td><td><span className={`redirect-code ${redirectTypeCopy[row.type].className}`}>{row.type}</span></td><td><span className={`redirect-state ${row.status.toLowerCase()}`}><i />{row.status}</span></td><td className="table-muted">{row.hits}</td><td className="table-muted">{row.updated}</td><td><button className="icon-button" onClick={() => showToast(`${row.source} selected for editing`)}><MoreHorizontal size={17} /></button></td></tr>)}{filteredRows.length === 0 && <tr><td colSpan={7}><div className="empty-state"><Link2 size={18} /><span>No redirect rules match this filter.</span></div></td></tr>}</tbody></table></div></section>
+    <section className="panel redirect-history"><SectionHeading eyebrow="Audit trail" title="Recent redirect history" detail="Keep an eye on changes before they affect search or partner links." action={<SmallButton onClick={() => showToast('Full history export queued')}>Export history <Download size={14} /></SmallButton>} /><div className="redirect-history-list"><div className="redirect-history-row"><History size={15} /><div><strong>301 /trekking/everest-base-camp activated</strong><span>By Anika Sharma · Today, 09:12 · 1,842 requests have followed it</span></div></div><div className="redirect-history-row"><History size={15} /><div><strong>302 /offers/autumn-2025 paused</strong><span>By Maya K. · Aug 18 · Campaign landing page retained for review</span></div></div><div className="redirect-history-row"><History size={15} /><div><strong>410 /expedition/annapurna-legacy created</strong><span>By SEO Manager · Aug 12 · No replacement page selected</span></div></div></div></section>
+    {toast && <div className="toast"><Check size={15} />{toast}</div>}
+  </div>
 }

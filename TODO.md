@@ -35,7 +35,7 @@
 
 ## System, security, and integrations
 
-- [ ] Add URL redirect management with 301/302, source/destination, status, bulk import, and history.
+- [ ] Implement redirect management with old/source URL, new/destination URL, 301 permanent redirects, 302 temporary redirects, 307 method-preserving redirects, 410 gone responses, active/paused status, bulk import, redirect history, collision/loop validation, and API-level persistence.
 - [ ] Add admin management, profile settings, roles and permissions with Super Admin, Administrator, Content Manager, SEO Manager, Editor, Travel Manager, Booking Manager, and Media Manager roles; enforce view/create/edit/delete/publish/approve/manage-settings at API level, not only in menus.
 - [ ] Add SEO overview, metadata, sitemap, robots, canonical URLs, schema, redirects, broken links, index status, crawling errors, audit, and optional Google Search Console integration.
 - [ ] Add website settings for agency identity, logo/favicon, contact details, address, email/phone/WhatsApp, social links, currency, timezone, language, header/footer, SMTP, analytics, Search Console, Maps, cookies, and privacy.

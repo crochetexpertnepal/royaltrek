@@ -1,4 +1,4 @@
-import { BarChart3, BookOpen, CalendarDays, ClipboardList, Compass, FileText, Globe2, Image, LayoutDashboard, Map, MessageCircle, Mountain, PanelTop, Settings2, Users, WalletCards } from 'lucide-react'
+import { ArrowRightLeft, BarChart3, BookOpen, CalendarDays, ClipboardList, Compass, FileText, Globe2, Image, LayoutDashboard, Map, MessageCircle, Mountain, PanelTop, Settings2, Users, WalletCards } from 'lucide-react'
 import type { NavSection } from '../types'
 
 export const navSections: NavSection[] = [
@@ -28,6 +28,7 @@ export const navSections: NavSection[] = [
   ] },
   { label: 'System', items: [
     { label: 'SEO overview', path: '/system/seo', icon: Globe2 },
+    { label: 'Redirects', path: '/system/redirects', icon: ArrowRightLeft, badge: '4' },
     { label: 'Website settings', path: '/system/settings', icon: Settings2 },
   ] },
 ]
@@ -50,5 +51,6 @@ export const routeLabels: Record<string, { eyebrow: string; title: string; detai
   '/customers/people': { eyebrow: 'Customers / People', title: 'Customers', detail: 'Build context around the people who trust your team.' },
   '/customers/payments': { eyebrow: 'Customers / Payments', title: 'Payments', detail: 'A calm view of deposits, balances, and transaction history.' },
   '/system/seo': { eyebrow: 'System / SEO', title: 'SEO overview', detail: 'Make the right pages easier to find, understand, and trust.' },
+  '/system/redirects': { eyebrow: 'System / SEO / Redirects', title: 'Redirect management', detail: 'Keep old paths useful while your content evolves.' },
   '/system/settings': { eyebrow: 'System / Settings', title: 'Website settings', detail: 'Keep the agency identity and operating defaults in one place.' },
 }

@@ -12,7 +12,7 @@ export type NavSection = {
   items: NavItem[]
 }
 
-export type Status = 'Published' | 'Draft' | 'In review' | 'Upcoming' | 'Confirmed' | 'Pending' | 'Follow-up' | 'New' | 'Archived'
+export type Status = 'Published' | 'Draft' | 'In review' | 'Upcoming' | 'Confirmed' | 'Pending' | 'Follow-up' | 'New' | 'Archived' | 'Active' | 'Paused' | 'Broken'
 
 export type PackageRecord = {
   name: string

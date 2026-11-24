@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AppShell from './layouts/AppShell'
-import { AnalyticsPage, DashboardPage, ItineraryPage, ResourcePage, SettingsPage } from './pages/DashboardPages'
+import { AnalyticsPage, DashboardPage, ItineraryPage, RedirectPage, ResourcePage, SettingsPage } from './pages/DashboardPages'
 
 export default function App() {
   return <AppShell><Routes>
@@ -8,6 +8,7 @@ export default function App() {
     <Route path="/analytics" element={<AnalyticsPage />} />
     <Route path="/trekking/itineraries" element={<ItineraryPage />} />
     <Route path="/system/settings" element={<SettingsPage />} />
+    <Route path="/system/redirects" element={<RedirectPage />} />
     <Route path="/content/blog" element={<ResourcePage dataKey="blog" title="Blog management" action="New blog post" />} />
     <Route path="/content/pages" element={<ResourcePage dataKey="pages" title="Website pages" action="New page" />} />
     <Route path="/content/media" element={<ResourcePage dataKey="media" title="Media library" action="Upload media" />} />
