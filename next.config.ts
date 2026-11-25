@@ -3,6 +3,7 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  allowedDevOrigins: ['127.0.0.1', 'localhost'],
   async redirects() {
     return [
       { source: '/trekking/everest-base-camp', destination: '/treks/everest-base-camp', permanent: true },
