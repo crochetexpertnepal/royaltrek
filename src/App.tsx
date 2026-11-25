@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AppShell from './layouts/AppShell'
-import { AnalyticsPage, BlogEditorPage, BlogPage, DashboardPage, ItineraryPage, RedirectPage, ResourcePage, SettingsPage } from './pages/DashboardPages'
-import { AboutPage, ContactPage, HomePage, JournalArticlePage, ListingPage, PackagePage } from './pages/PublicSite'
+import { AnalyticsPage, BlogEditorPage, BlogPage, DashboardPage, ItineraryPage, RedirectPage, ResourcePage, SettingsPage } from './legacy-pages/DashboardPages'
+import { AboutPage, ContactPage, HomePage, JournalArticlePage, ListingPage, PackagePage } from './legacy-pages/PublicSite'
 
 function CmsFrame({ children }: { children: React.ReactNode }) { return <AppShell>{children}</AppShell> }
 
