@@ -20,7 +20,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [profileOpen, setProfileOpen] = useState(false)
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({})
   const [darkMode, setDarkMode] = useState(false)
-  const pageMeta = routeLabels[location.pathname] ?? (location.pathname.startsWith('/content/blog/') ? routeLabels['/content/blog/:slug/edit'] : routeLabels['/'])
+  const pageMeta = routeLabels[location.pathname] ?? (location.pathname.startsWith('/content/blog/') ? routeLabels['/content/blog/:slug/edit'] : routeLabels['/admin'])
   const results = useMemo(() => searchItems.filter((item) => `${item.label} ${item.detail}`.toLowerCase().includes(search.toLowerCase())).slice(0, 5), [search])
 
   const go = (path: string) => { navigate(path); setMobileOpen(false); setSearch('') }

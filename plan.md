@@ -66,6 +66,10 @@ public/
 
 The CMS frontend uses a compact modern trekking-agency system: deep charcoal `#151515` for navigation and authority, trail orange `#F47529` for actions and wayfinding, warm stone `#F7F5F0` for the canvas, moss `#486052` for supporting states, and ink `#1B1B1B` for readable content. Manrope handles all interface copy and DM Serif Display is reserved for editorial page headings so the UI feels operational without losing a travel-story character. The shell keeps a fixed command rail on desktop, collapses to a slide-out drawer on mobile, uses touch-safe controls, and avoids AI-like assistant surfaces or decorative noise.
 
+## Public website layer
+
+The guest-facing website now owns the root route and the public information architecture: home, trekking packages, package detail pages, destinations, tours, travel journal, journal articles, about, and contact/enquiry. The existing CMS remains available at `/admin` and its management routes, using the same Royal Trek data boundary so backend records can replace demo records without changing the public page components.
+
 ## Delivery sequence
 
 1. Dashboard shell and route manifest with responsive navigation.

@@ -47,3 +47,9 @@
 - [ ] Use primary/foreign keys, one-to-many and many-to-many relationships, unique constraints, indexes, created/updated timestamps, and soft deletion where appropriate.
 - [ ] Replace demo data with persistent CRUD endpoints and validated forms; ensure all management modules support Create, Read, Update, and Delete according to permissions.
 - [ ] Connect media selection across blogs, packages, tours, destinations, and pages; connect analytics only when real provider credentials and permissions are configured.
+
+## Public website
+
+- [x] Build a clean public Royal Trek website with a responsive header/footer, homepage, trekking packages, destinations, tours, travel journal, about page, contact/enquiry page, and package/article detail routes.
+- [x] Keep the CMS workspace available at `/admin` and preserve the existing content, trekking, customer, SEO, redirect, and settings routes for the backend team.
+- [x] Make the public site mobile-first with touch-friendly controls, responsive cards/forms, clear enquiry CTAs, and the Royal Trek charcoal/orange/stone visual system.
