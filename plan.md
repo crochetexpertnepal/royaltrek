@@ -8,24 +8,24 @@ The architecture is intentionally modular so the same presentation primitives ca
 
 ## Design exploration
 
-- Alpine editorial SaaS — 0.07 probability: calm whitespace, editorial typography, map-like cards, and restrained green accents.
-- Expedition command center — 0.05 probability: dark field-console surfaces, high-contrast telemetry, and dense operational panels.
-- **Trailhead atelier — 0.08 probability (chosen):** premium travel operations UI that pairs forest-green navigation with warm mineral accents, tactile surfaces, and spacious editorial hierarchy.
+- Expedition editorial desk — 0.07 probability: calm whitespace, editorial typography, route cards, and restrained trail-orange accents.
+- Mountain operations desk — 0.05 probability: deep charcoal surfaces, high-contrast status, and dense operational panels.
+- **Royal Trek field desk — 0.08 probability (chosen):** premium trekking operations UI that pairs charcoal navigation with trail-orange wayfinding, warm stone surfaces, and compact editorial hierarchy.
 
 ### Chosen design system
 
-- **Design movement:** Trailhead atelier; a contemporary travel-journal sensibility translated into a high-clarity SaaS control room.
+- **Design movement:** Royal Trek field desk; a contemporary expedition-journal sensibility translated into a high-clarity CMS control room.
 - **Core principles:** calm density, operational clarity, warm human details, and progressive disclosure.
-- **Color philosophy:** deep forest green anchors trust and groundedness; mountain teal signals movement and status; warm orange is reserved for action and urgency; bone/stone neutrals keep the interface breathable.
+- **Color philosophy:** deep charcoal anchors trust and groundedness; trail orange marks actions and wayfinding; moss supports status; warm stone neutrals keep the interface breathable.
 - **Layout paradigm:** a fixed command rail and offset content canvas, with wide editorial hero bands and asymmetric two-column operational panels instead of a uniform centered grid.
 - **Signature elements:** contour-line background texture, orange “trail marker” status dots, and compact route chips for region/difficulty/status.
 - **Interaction philosophy:** every affordance should reveal consequence quickly: active nav states, visible selection feedback, actionable empty states, and filter/search controls that narrow data in place.
 - **Animation:** subtle 160–220ms ease-out transitions for hover, nav selection, drawer entry, and chart emphasis; no looping decorative motion.
-- **Typography system:** Plus Jakarta Sans for interface/UI copy; Fraunces for editorial display moments such as the greeting and section titles. Use strong 12–14px labels, 16–18px body copy, and 30–42px display hierarchy.
+- **Typography system:** Manrope for interface/UI copy; DM Serif Display for editorial display moments such as the greeting and section titles. Use strong 12–14px labels, 16–18px body copy, and 30–42px display hierarchy.
 - **Brand essence:** an operations desk for teams who move people through mountains safely and beautifully; grounded, capable, welcoming.
 - **Brand voice:** concise, observant, and action-oriented. Example lines: “Keep the next departure moving.” and “A clear view of every trail, traveller, and story.”
 - **Wordmark & logo:** a compact contour-line peak mark paired with a lowercase wordmark, used as a simple CSS/SVG lockup in the sidebar.
-- **Signature brand color:** deep forest green `#123D32`.
+- **Signature brand color:** trail orange `#F47529`, grounded by deep charcoal `#151515`.
 
 ## Product architecture
 
@@ -61,6 +61,10 @@ src/
 public/
   manus-routes.json
 ```
+
+## Frontend visual refresh — Royal Trek CMS
+
+The CMS frontend uses a compact modern trekking-agency system: deep charcoal `#151515` for navigation and authority, trail orange `#F47529` for actions and wayfinding, warm stone `#F7F5F0` for the canvas, moss `#486052` for supporting states, and ink `#1B1B1B` for readable content. Manrope handles all interface copy and DM Serif Display is reserved for editorial page headings so the UI feels operational without losing a travel-story character. The shell keeps a fixed command rail on desktop, collapses to a slide-out drawer on mobile, uses touch-safe controls, and avoids AI-like assistant surfaces or decorative noise.
 
 ## Delivery sequence
 

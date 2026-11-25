@@ -34,7 +34,7 @@ export const navSections: NavSection[] = [
 ]
 
 export const routeLabels: Record<string, { eyebrow: string; title: string; detail: string }> = {
-  '/': { eyebrow: 'Workspace', title: 'Good morning, Anika', detail: 'Here’s the shape of the trailhead today.' },
+  '/': { eyebrow: 'Workspace', title: 'Good morning, Anika', detail: 'Here’s the shape of the Royal Trek season today.' },
   '/analytics': { eyebrow: 'Workspace / Analytics', title: 'Analytics', detail: 'A clear view of reach, intent, and conversion.' },
   '/content/blog': { eyebrow: 'Content management / Blog', title: 'Blog management', detail: 'Keep your travel stories useful, current, and discoverable.' },
   '/content/blog/:slug/edit': { eyebrow: 'Content management / Blog / Editor', title: 'Edit blog post', detail: 'Shape the story, search appearance, and publishing details in one place.' },

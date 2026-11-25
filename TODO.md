@@ -2,9 +2,9 @@
 
 ## Foundation and dashboard shell
 
-- [ ] Deliver a premium travel-inspired dashboard rather than a basic admin template, using deep forest green `#123D32`, mountain teal `#237C72`, warm orange `#F59E45`, light neutral `#F7F8F6`, white cards, dark charcoal text, subtle borders, rounded cards, and restrained shadows.
+- [x] Deliver a modern trekking-agency CMS frontend using deep charcoal `#151515`, trail orange `#F47529`, warm stone `#F7F5F0`, moss `#486052`, white cards, Manrope + DM Serif Display typography, compact controls, subtle borders, rounded cards, and restrained shadows.
 - [ ] Provide a fixed, collapsible left sidebar with agency logo/name, icon navigation, expandable categories, active highlighting, notification indicators, and a user profile area; provide top navigation with global search, breadcrumbs, quick-create, notifications, help, profile dropdown, and theme switch affordance.
-- [ ] Make the shell responsive: full sidebar and multi-column content on desktop; collapsible navigation and adaptive cards/forms on tablet; slide-out navigation, stacked content, touch-friendly controls, and responsive charts on mobile.
+- [x] Make the shell responsive: full sidebar and multi-column content on desktop; collapsible navigation and adaptive cards/forms on tablet; slide-out navigation, stacked content, touch-friendly controls, and responsive charts on mobile.
 - [ ] Create a route manifest covering every implemented page and keep it synchronized with source routes.
 
 ## Overview and analytics

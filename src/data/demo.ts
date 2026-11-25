@@ -51,7 +51,7 @@ export const contentRows: Record<string, TableRow[]> = {
   ],
   pages: [
     { name: 'Home page', secondary: 'Homepage · /', status: 'Published', meta: 'Updated 2 hours ago', owner: 'Anika Sharma' },
-    { name: 'About Trailhead', secondary: 'Company · /about', status: 'Published', meta: 'Updated Aug 12', owner: 'Maya K.' },
+    { name: 'About Royal Trek', secondary: 'Company · /about', status: 'Published', meta: 'Updated Aug 12', owner: 'Maya K.' },
     { name: 'Responsible travel', secondary: 'Landing page · /responsible-travel', status: 'Draft', meta: 'Section builder', owner: 'Maya K.' },
   ],
   destinations: [
@@ -80,7 +80,7 @@ export const contentRows: Record<string, TableRow[]> = {
   media: [
     { name: 'everest-sunrise.webp', secondary: 'Hero image · 2400 × 1600', status: 'Published', meta: '2.4 MB', owner: 'Media team' },
     { name: 'annapurna-trail.webp', secondary: 'Package gallery · 1800 × 1200', status: 'Published', meta: '1.8 MB', owner: 'Media team' },
-    { name: 'trailhead-wordmark.svg', secondary: 'Brand asset · 640 × 120', status: 'Published', meta: '42 KB', owner: 'Media team' },
+    { name: 'royal-trek-wordmark.svg', secondary: 'Brand asset · 640 × 120', status: 'Published', meta: '42 KB', owner: 'Media team' },
   ],
 }
 
