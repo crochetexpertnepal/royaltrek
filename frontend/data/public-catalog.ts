@@ -1,4 +1,4 @@
-import { contentRows, packages as cmsPackages } from './demo'
+import { contentRows, packages as cmsPackages } from '../../backend/cms/data/demo'
 
 export const publicPackages = cmsPackages.filter((item) => item.status === 'Published')
 

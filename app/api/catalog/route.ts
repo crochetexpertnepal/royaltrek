@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { publicDestinations, publicJournal, publicPackages, publicTours } from '../../../src/data/public-catalog'
+import { publicDestinations, publicJournal, publicPackages, publicTours } from '../../../frontend/data/public-catalog'
 
 export async function GET() {
   return NextResponse.json({
